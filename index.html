@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#030710">
+<title>星门 · 手势粒子场</title>
+<link rel="stylesheet" href="console.css?v=field">
+<script src="console.js?v=gesture-1" defer></script>
+</head>
+<body>
+<main class="observatory">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <header class="topbar">
+    <div class="brand">
+      <svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="16"/><ellipse cx="21" cy="21" rx="18" ry="7" transform="rotate(-35 21 21)"/><circle cx="21" cy="21" r="3"/></svg>
+      <span>STARGATE</span>
+    </div>
+    <div class="top-actions">
+      <button id="cameraToggle" class="camera-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h11v10H4zM15 10l5-3v10l-5-3"/></svg><span>开启摄像头</span></button>
+      <button id="fullscreen" class="icon-button" type="button" title="全屏" aria-label="全屏"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11 0h5v-5"/></svg></button>
+    </div>
+  </header>
+
+  <section class="view-title" aria-label="当前粒子形态">
+    <div class="micro"><span id="fieldIndex">01</span><i></i><span id="modeEnglish">PARTICLE CORE</span></div>
+    <h1 id="modeName" aria-live="polite">粒子核心</h1>
+    <p id="modeHint">张手展开，握拳收束，快速挥手留下尾迹。</p>
+  </section>
+
+  <section class="camera-status" aria-label="手势识别">
+    <div class="sensor" id="sensor">
+      <canvas id="cameraFeed" width="360" height="202" aria-label="本地摄像头画面"></canvas>
+    </div>
+    <div class="sensor-meta"><span id="camState" role="status">待连接</span><span id="handCount">00 / 01</span></div>
+    <p id="camHint" data-idle>开启后，将单手放入取景框。画面仅在本机处理。</p>
+  </section>
+
+  <div class="field-status">
+    <span id="inputStatus"><i></i> 手动控制</span>
+    <div id="spreadStatus" class="spread-status">
+      <span>展开度</span><meter id="spread" min="0" max="100" value="32" aria-label="粒子展开度"></meter><b id="spreadValue">32%</b>
+    </div>
+  </div>
+
+  <section class="dock" aria-label="粒子控制">
+    <div class="dock-bar">
+      <span class="micro"><span id="particles">—</span> 粒子 <i></i> <span id="zoomValue">1.00×</span></span>
+      <div class="dock-actions">
+        <button type="button" id="zoomOut" aria-label="缩小">−</button>
+        <button type="button" id="resetView" title="重置视角" aria-label="重置视角">1×</button>
+        <button type="button" id="zoomIn" aria-label="放大">+</button>
+        <button type="button" id="pulse" class="pulse" title="空格释放脉冲"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12h5l3-7 4 14 3-7h5"/></svg>脉冲</button>
+      </div>
+    </div>
+    <div id="modes" class="modes" role="group" aria-label="粒子形态，按数字键 1 到 5 切换"></div>
+    <p class="dock-hint">按住收束 · 松开释放 · 滚轮缩放</p>
+  </section>
+</main>
+</body>
+</html>
